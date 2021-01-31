@@ -37,21 +37,21 @@ public class Utility extends ReadExcel{
 	public static String cls;
 	public static Logger logger; 
 
-	public static void Configlogger() {
-		logger = Logger.getLogger("Pre.class");
-		BasicConfigurator.configure(); 
-	}
-
-	public static void Logger(String str) {
-		logger = Logger.getLogger(str);
-	}
+//	public static void Configlogger() {
+//		logger = Logger.getLogger("Pre.class");
+//		BasicConfigurator.configure(); 
+//	}
+//
+//	public static void Logger(String str) {
+//		logger = Logger.getLogger(str);
+//	}
 	
 
 	
 	public static void browser_Selections(String brw, String url) throws AWTException
 	{
-		Configlogger();
-		Logger(cls); 
+//		Configlogger();
+//		Logger(cls); 
 		switch (brw.toUpperCase())
 		{
 			case "CHROME": {
@@ -98,7 +98,7 @@ public class Utility extends ReadExcel{
 				}
 		}		
 		
-		logger.info(brw+" is intialized and launched successfully");
+		System.out.println(brw+" is intialized and launched successfully");
 		
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -118,36 +118,36 @@ public class Utility extends ReadExcel{
 		try {
 			switch (locator.toUpperCase()) {
 			case "ID":
-				logger.info("The field, '"+fieldDesc+"' located by (id) : '" + locator + "' has been found successfully");
+				System.out.println("The field, '"+fieldDesc+"' located by (id) : '" + locator + "' has been found successfully");
 				return driver.findElement(By.id(locValue));
 
 			case "XPATH":
-				logger.info("The field, '"+fieldDesc+"' located by (xpath) : '" + locator + "' has been found successfully");
+				System.out.println("The field, '"+fieldDesc+"' located by (xpath) : '" + locator + "' has been found successfully");
 				return driver.findElement(By.xpath(locValue));
 
 			case "CLASS":
-				logger.info("The field, '"+fieldDesc+"' located by (class) : '" + locator + "' has been found successfully");
+				System.out.println("The field, '"+fieldDesc+"' located by (class) : '" + locator + "' has been found successfully");
 				return driver.findElement(By.className(locValue));
 
 			case "LINK":
-				logger.info("The field, '"+fieldDesc+"' located by (link) : '" + locator + "' has been found successfully");
+				System.out.println("The field, '"+fieldDesc+"' located by (link) : '" + locator + "' has been found successfully");
 				return driver.findElement(By.linkText(locValue));
 
 			case "NAME":
-				logger.info("The field, '"+fieldDesc+"' located by (name) : '" + locator + "' has been found successfully");
+				System.out.println("The field, '"+fieldDesc+"' located by (name) : '" + locator + "' has been found successfully");
 				return driver.findElement(By.name(locValue));
 
 			case "LIST":
-				logger.info("The field, '"+fieldDesc+"' located by (list) : " + locator + "has been found successfully");
+				System.out.println("The field, '"+fieldDesc+"' located by (list) : " + locator + "has been found successfully");
 				return driver.findElement(By.name(locValue));
 
 			default:
 				break;
 			}
 		} catch (NoSuchElementException e) {
-			logger.error("Element Not Found!! Field : '"+fieldDesc+"'Locator : '" + locator + "', Value : '" + locValue+ "'. Exception Details : " + e);
+			System.out.println("Element Not Found!! Field : '"+fieldDesc+"'Locator : '" + locator + "', Value : '" + locValue+ "'. Exception Details : " + e);
 		} catch (IllegalArgumentException e) {
-			logger.error("Invalid Argument passed!! Field : '"+fieldDesc+"' Locator : '" + locator + "', Value : '" + locValue+ "'. Exception Details : " + e);
+			System.out.println("Invalid Argument passed!! Field : '"+fieldDesc+"' Locator : '" + locator + "', Value : '" + locValue+ "'. Exception Details : " + e);
 		}
 		return null;
 	}
@@ -159,20 +159,20 @@ public class Utility extends ReadExcel{
 		try {
 			switch (locator.toUpperCase()) {
 			case "ID":
-				logger.info("The field, '"+fieldDesc+"' located by (id) : '" + locator + "' has been found successfully");
+				System.out.println("The field, '"+fieldDesc+"' located by (id) : '" + locator + "' has been found successfully");
 				return driver.findElements(By.id(locValue));
 
 			case "XPATH":
-				logger.info("The field, '"+fieldDesc+"' located by (xpath) : '" + locator + "' has been found successfully");
+				System.out.println("The field, '"+fieldDesc+"' located by (xpath) : '" + locator + "' has been found successfully");
 				return driver.findElements(By.xpath(locValue));
 
 			default:
 				break;
 			}
 		} catch (NoSuchElementException e) {
-			logger.error("Element Not Found!! Field : '"+fieldDesc+"'Locator : '" + locator + "', Value : '" + locValue+ "'. Exception Details : " + e);
+			System.out.println("Element Not Found!! Field : '"+fieldDesc+"'Locator : '" + locator + "', Value : '" + locValue+ "'. Exception Details : " + e);
 		} catch (IllegalArgumentException e) {
-			logger.error("Invalid Argument passed!! Field : '"+fieldDesc+"' Locator : '" + locator + "', Value : '" + locValue+ "'. Exception Details : " + e);
+			System.out.println("Invalid Argument passed!! Field : '"+fieldDesc+"' Locator : '" + locator + "', Value : '" + locValue+ "'. Exception Details : " + e);
 		}
 		return null;
 	}
@@ -186,11 +186,11 @@ public class Utility extends ReadExcel{
 			wait.until(ExpectedConditions.visibilityOf(ele));
 			executor.executeScript("arguments[0].scrollIntoView(true);", ele);
 			ele.clear();
-			logger.info("The prefilled text in the field, '"+fieldDesc+"'; element '" + ele + "' cleared successfully");
+			System.out.println("The prefilled text in the field, '"+fieldDesc+"'; element '" + ele + "' cleared successfully");
 		} catch (org.openqa.selenium.NoSuchElementException e) {
-			logger.error("Element Not Found!! The field, '"+fieldDesc+"'; element '" + ele + "'. Exception Details : " + e);
+			System.out.println("Element Not Found!! The field, '"+fieldDesc+"'; element '" + ele + "'. Exception Details : " + e);
 		} catch (NullPointerException e) {
-			logger.error("Invalid/Incorrect argument experienced for the field, '"+fieldDesc+"'; element '" + ele + "'. Exception Details : " + e);
+			System.out.println("Invalid/Incorrect argument experienced for the field, '"+fieldDesc+"'; element '" + ele + "'. Exception Details : " + e);
 		}
 	}
 	
@@ -202,7 +202,7 @@ public class Utility extends ReadExcel{
 			wait.until(ExpectedConditions.elementToBeClickable(ele));
 			executor.executeScript("arguments[0].scrollIntoView(true);", ele);
 			ele.click();
-			logger.info("The field, '"+fieldDesc+"'; element '" + ele + "' clicked successfully by '.click' method");
+			System.out.println("The field, '"+fieldDesc+"'; element '" + ele + "' clicked successfully by '.click' method");
 		}
 		catch (org.openqa.selenium.NoSuchElementException e) {
 			
@@ -210,21 +210,21 @@ public class Utility extends ReadExcel{
 					System.out.println(".Java Executor");
 					executor.executeScript("arguments[0].scrollIntoView(true);", ele);
 					executor.executeScript("arguments[0].click();", ele);
-					logger.info("The field, '"+fieldDesc+"'; element '" +ele + "' clicked successfully by 'java executeScript.click' method");
+					System.out.println("The field, '"+fieldDesc+"'; element '" +ele + "' clicked successfully by 'java executeScript.click' method");
 					} 
 					catch (ElementClickInterceptedException ex) {
 					
 							try {
 								action.moveToElement(ele).click().perform();
-								logger.info("The field, '"+fieldDesc+"'; element '" +ele + "' clicked successfully by 'action.click' method");
+								System.out.println("The field, '"+fieldDesc+"'; element '" +ele + "' clicked successfully by 'action.click' method");
 								} 
 								catch (org.openqa.selenium.NoSuchElementException exe) {
-									logger.error("Element Not Found!! The field, '"+fieldDesc+"'; element '" + ele + "'. Details : '" + exe +"'"+ "Exception Details : " + e);
+									System.out.println("Element Not Found!! The field, '"+fieldDesc+"'; element '" + ele + "'. Details : '" + exe +"'"+ "Exception Details : " + e);
 								}
 					}
 		}
 		catch (Exception e) {
-			logger.error("Exception occured when handling the field, '"+fieldDesc+"'; element '" + ele + "'. Details : '" + e +"'"+ "Exception Details : " + e);
+			System.out.println("Exception occured when handling the field, '"+fieldDesc+"'; element '" + ele + "'. Details : '" + e +"'"+ "Exception Details : " + e);
 		}
 	}
 	
@@ -239,13 +239,13 @@ public class Utility extends ReadExcel{
 			executor.executeScript("arguments[0].scrollIntoView(true);", ele);
 			clear(ele,fieldDesc);
 			ele.sendKeys(data);
-			logger.info("The value " + data + " is entered successfully in the field '"+fieldDesc+", Locator '"+ ele+"'");
+			System.out.println("The value " + data + " is entered successfully in the field '"+fieldDesc+", Locator '"+ ele+"'");
 		} catch (IllegalStateException e) {
-			logger.error("Element Not in input acceptable state !! Field : "+fieldDesc+"; Locator : " + ele + "; Value : " + data + "Exception Details : " + e);
+			System.out.println("Element Not in input acceptable state !! Field : "+fieldDesc+"; Locator : " + ele + "; Value : " + data + "Exception Details : " + e);
 		} catch (TypeNotPresentException e) {
-			logger.error("Type option not enabled !! Field : "+fieldDesc+"; Locator : " + ele + "; Value : " + data + "Exception Details : " + e);
+			System.out.println("Type option not enabled !! Field : "+fieldDesc+"; Locator : " + ele + "; Value : " + data + "Exception Details : " + e);
 		} catch (NullPointerException e) {
-			logger.error("Invalid/Incorrect argument!! Field : "+fieldDesc+"; Locator : " + ele + "; Value : " + data + "Exception Details : " + e);
+			System.out.println("Invalid/Incorrect argument!! Field : "+fieldDesc+"; Locator : " + ele + "; Value : " + data + "Exception Details : " + e);
 		}
 	}
 	
@@ -258,16 +258,16 @@ public class Utility extends ReadExcel{
 		try {
 			txt = ele.getText();
 			if (txt != "") {
-				logger.info("The text from the field : "+fieldDesc+"; element :" + ele + " has been extracted");
+				System.out.println("The text from the field : "+fieldDesc+"; element :" + ele + " has been extracted");
 			} else {
-				logger.error("The text from the field : "+fieldDesc+"; element :" + ele + " is BLANK or NULL");
+				System.out.println("The text from the field : "+fieldDesc+"; element :" + ele + " is BLANK or NULL");
 			}
 		} catch (org.openqa.selenium.NoSuchElementException e) {
-			logger.error("Element Not Found!! Field : "+fieldDesc+"; Webelement : " + ele + "Exception Details : " + e);
+			System.out.println("Element Not Found!! Field : "+fieldDesc+"; Webelement : " + ele + "Exception Details : " + e);
 		} catch (IllegalArgumentException e) {
-			logger.error("Invalid/Incorrect argument Field : "+fieldDesc+"; Webelement : " + ele + "Exception Details : " + e);
+			System.out.println("Invalid/Incorrect argument Field : "+fieldDesc+"; Webelement : " + ele + "Exception Details : " + e);
 		} catch (NullPointerException e) {
-			logger.error("Invalid/Incorrect argument Field : "+fieldDesc+"; Webelement : " + ele + "Exception Details : " + e);
+			System.out.println("Invalid/Incorrect argument Field : "+fieldDesc+"; Webelement : " + ele + "Exception Details : " + e);
 		}
 
 		return txt;
@@ -282,17 +282,17 @@ public class Utility extends ReadExcel{
 		try {
 			String titleofpage = driver.getTitle();
 			if (titleofpage.equals(expectedTitle)) {
-				logger.info("The given title <" + expectedTitle + "> is matching with the UI title [" + titleofpage + "]");
+				System.out.println("The given title <" + expectedTitle + "> is matching with the UI title [" + titleofpage + "]");
 				bReturn = true;
 			} else {
-				logger.info("The given title <" + expectedTitle + "> is NOT matching with the UI title [" + titleofpage	+ "]");
+				System.out.println("The given title <" + expectedTitle + "> is NOT matching with the UI title [" + titleofpage	+ "]");
 			}
 		} catch (NoSuchElementException e) {
-			logger.error("Element Not Found!! Webelement : " + driver.getTitle() + "Exception Details : " + e);
+			System.out.println("Element Not Found!! Webelement : " + driver.getTitle() + "Exception Details : " + e);
 		} catch (IllegalArgumentException e) {
-			logger.error("Invalid/Incorrect argument from Webelement : " + driver.getTitle() + "Exception Details : " + e);
+			System.out.println("Invalid/Incorrect argument from Webelement : " + driver.getTitle() + "Exception Details : " + e);
 		} catch (NullPointerException e) {
-			logger.error("Invalid/Incorrect argument from Webelement : " + driver.getTitle() + "Exception Details : " + e);
+			System.out.println("Invalid/Incorrect argument from Webelement : " + driver.getTitle() + "Exception Details : " + e);
 		}
 		return bReturn;
 	}
@@ -303,17 +303,17 @@ public class Utility extends ReadExcel{
 			String vercompnam = getText(ele, fieldName);
 
 			if (vercompnam.equals(expectedText)) {
-				logger.info("For the field : "+fieldName+"; The UI text [" + vercompnam + "] matching the given text <" + expectedText + ">");
+				System.out.println("For the field : "+fieldName+"; The UI text [" + vercompnam + "] matching the given text <" + expectedText + ">");
 				
 			} else {
-				logger.error("For the field : "+fieldName+"; The UI text [" + vercompnam + "] doesnt match with the given text <" + expectedText + ">");
+				System.out.println("For the field : "+fieldName+"; The UI text [" + vercompnam + "] doesnt match with the given text <" + expectedText + ">");
 			}
 		} catch (NoSuchElementException e) {
-			logger.error("Element Not Found!! For the field "+fieldName+";  Webelement : " + ele + " expected text " + expectedText);
+			System.out.println("Element Not Found!! For the field "+fieldName+";  Webelement : " + ele + " expected text " + expectedText);
 		} catch (IllegalArgumentException e) {
-			logger.error("Invalid/Incorrect argument For the field : "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
+			System.out.println("Invalid/Incorrect argument For the field : "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
 		} catch (NullPointerException e) {
-			logger.error("Invalid/Incorrect argument For the field : "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
+			System.out.println("Invalid/Incorrect argument For the field : "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
 		}
 
 	}
@@ -325,17 +325,17 @@ public class Utility extends ReadExcel{
 			String vercompnam = getText(ele, fieldName);
 
 			if (vercompnam.contains(expectedText)) {
-				logger.info("For the field : "+fieldName+"; The UI text [" + vercompnam + "] contains the given text <" + expectedText + ">");
+				System.out.println("For the field : "+fieldName+"; The UI text [" + vercompnam + "] contains the given text <" + expectedText + ">");
 	
 			} else {
-				logger.error("For the field : "+fieldName+"; The UI text [" + vercompnam + "] doesnt contain the given text <" + expectedText + ">");
+				System.out.println("For the field : "+fieldName+"; The UI text [" + vercompnam + "] doesnt contain the given text <" + expectedText + ">");
 			}
 		} catch (NoSuchElementException e) {
-			logger.error("Element Not Found!! For the field : "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
+			System.out.println("Element Not Found!! For the field : "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
 		} catch (IllegalArgumentException e) {
-			logger.error("Invalid/Incorrect argument "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
+			System.out.println("Invalid/Incorrect argument "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
 		} catch (NullPointerException e) {
-			logger.error("Invalid/Incorrect argument "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
+			System.out.println("Invalid/Incorrect argument "+fieldName+"; Webelement : " + ele + " expected text " + expectedText);
 		}
 
 	}

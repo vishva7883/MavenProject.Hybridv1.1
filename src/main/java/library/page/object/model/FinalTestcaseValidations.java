@@ -45,11 +45,11 @@ public class FinalTestcaseValidations extends Utility {
 
 		List<WebElement> tabRow = findElementsBy("xpath", "(//table[@data-aura-class='uiVirtualDataTable'])[2]/tbody/tr", "Table of Attachments");
 		int initTabRowCount = tabRow.size();
-		logger.info("Total no of files added : "+initTabRowCount);
+		System.out.println("Total no of files added : "+initTabRowCount);
 		
 		if (initTabRowCount < 1)
 		{
-			logger.info("There are no files uploaded to delete");
+			System.out.println("There are no files uploaded to delete");
 		}
 		else
 		{
@@ -65,7 +65,7 @@ public class FinalTestcaseValidations extends Utility {
 				WebElement ele_DL = findElementBy("xpath", "//div[@class='branding-actions actionMenu']/ul/li/a/div[@title='Delete']", "Delete Action");
 				//action.moveToElement(ele_DL).click().perform();
 				click(ele_DL,"Delete Action");
-				logger.info("Delete has been clicked from the action dropdown");
+				System.out.println("Delete has been clicked from the action dropdown");
 				
 			
 				//Click 'Delete' confirmation button
@@ -82,7 +82,7 @@ public class FinalTestcaseValidations extends Utility {
 				
 				if (str.contentEquals("No results found"))
 				{
-					logger.info("Deletion Successfull. "+str);
+					System.out.println("Deletion Successfull. "+str);
 					break;
 				}
 				else
@@ -90,11 +90,11 @@ public class FinalTestcaseValidations extends Utility {
 					//Re-Count the number of attachment rows available for validation.
 					List<WebElement> lattabRow = findElementsBy("xpath","(//table[@data-aura-class='uiVirtualDataTable'])[2]/tbody/tr","Table of Attachments");
 					int latTabRowCount = lattabRow.size();
-					logger.info("Total no of files listed after deletion : "+latTabRowCount);
+					System.out.println("Total no of files listed after deletion : "+latTabRowCount);
 					
 					if (latTabRowCount == (initTabRowCount - 1))
 					{
-						logger.info("File Deleted Successfully");
+						System.out.println("File Deleted Successfully");
 					}
 					
 					break;
