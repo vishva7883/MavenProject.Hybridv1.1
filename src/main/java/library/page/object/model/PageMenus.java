@@ -18,6 +18,12 @@ public class PageMenus extends Utility {
         return new CampaignsPage(driver);
     }
 	
+	public OpportunityPage opportunities_Click() {
+		WebElement eleCampaignsTab = findElementBy("xpath", "//a[@title='Opportunities']", "Opportunities tab");
+		executor.executeScript("arguments[0].click();", eleCampaignsTab);
+        return new OpportunityPage(driver);
+    }
+	
 	
 	public PageMenus scroll()
 	{

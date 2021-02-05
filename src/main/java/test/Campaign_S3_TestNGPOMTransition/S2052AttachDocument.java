@@ -14,12 +14,7 @@ import library.utility.Utility;
 
 public class S2052AttachDocument extends Utility {
 
-	public S2052AttachDocument(RemoteWebDriver driver) {
-		this.driver = driver; 
-	}
-
-
-	@Test(dataProvider = "CreateCampaign")
+	@Test(dataProvider = "CreateCampaign", dependsOnMethods = "test.Campaign_S3_TestNGPOMTransition.S2051CreateCampaign")
 	public void mainflow(
 			String url,
 			String uid,
@@ -37,7 +32,9 @@ public class S2052AttachDocument extends Utility {
 		
 		
 		new LoginPage(driver)
-		.browser_Selection(browser, url)
+		.browser_Selection(browser, url);
+		
+		new LoginPage(driver)
 		.login_UserName_Type(uid)										// Enter SF login username
 		.login_Password_Type(pwd)										// Enter SF login password
 		.login_Submit_Click()											// Click login button

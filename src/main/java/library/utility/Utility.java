@@ -59,7 +59,7 @@ public class Utility extends ReadExcel{
 					options.addArguments("--disable-notifications");
 					options.addArguments("--disable-extensions");
 					options.addArguments("--incognito");
-					options.addExtensions(new File("extension_0_4_7_0.crx"));
+				//	options.addExtensions(new File("extension_0_4_7_0.crx"));
 					
 				    WebDriverManager.chromedriver().setup();
 					driver = new ChromeDriver(options);

@@ -15,10 +15,6 @@ import library.utility.Utility;
 public class S2051CreateCampaign extends Utility {
 
 
-	public S2051CreateCampaign(RemoteWebDriver driver) {
-		this.driver = driver;
-	}
-
 	@Test(dataProvider = "CreateCampaign")
 	public void mainflow(
 			String url,
@@ -34,7 +30,9 @@ public class S2051CreateCampaign extends Utility {
 		String campaign_Name = fn + ln + "_"+cn;	
 		
 		new LoginPage(driver)
-		.browser_Selection(browser, url)
+		.browser_Selection(browser, url);
+		
+		new LoginPage(driver)
 		.login_UserName_Type(uid)										// Enter SF login username
 		.login_Password_Type(pwd)										// Enter SF login password
 		.login_Submit_Click()											// Click login button
