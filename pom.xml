@@ -45,12 +45,14 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
-			<version>6.8.0</version>
+			<!-- <version>6.8.0</version> -->
+			<version>4.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>6.8.0</version>
+			<!-- <version>6.8.0</version> -->
+			<version>4.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
@@ -74,12 +76,22 @@
 			<version>0.0.12</version>
 		</dependency>
 		<dependency>
-            <groupId>com.qeagle</groupId>
-            <artifactId>DevTools-Selenium</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-
+			<groupId>com.qeagle</groupId>
+			<artifactId>DevTools-Selenium</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		
+		<!-- ****************** -->
+		<!-- Extent Report -->
 		<!-- ******************* -->
+		
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.0.6</version>
+		</dependency>
+
+		<!-- ****************** -->
 		<!-- LOG 4J Dependencies -->
 		<!-- ******************* -->
 		<dependency>

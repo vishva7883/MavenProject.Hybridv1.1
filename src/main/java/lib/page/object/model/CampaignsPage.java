@@ -1,6 +1,6 @@
 //<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-package library.page.object.model;
+package lib.page.object.model;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
@@ -14,10 +14,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import library.data.reader.ReadExcel;
-import library.utility.Utility;
+import lib.dataProviders.ReadExcel;
+import lib.utility.ProjectSpecificMethods;
 
-public class CampaignsPage extends Utility {
+public class CampaignsPage extends ProjectSpecificMethods {
 
 //Campaign List view
 

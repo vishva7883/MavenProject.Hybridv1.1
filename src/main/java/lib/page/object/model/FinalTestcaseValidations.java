@@ -1,6 +1,6 @@
 //<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-package library.page.object.model;
+package lib.page.object.model;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,9 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import library.utility.Utility;
+import lib.utility.ProjectSpecificMethods;
 
-public class FinalTestcaseValidations extends Utility {
+public class FinalTestcaseValidations extends ProjectSpecificMethods {
 
 	public FinalTestcaseValidations(RemoteWebDriver driver) {
 		this.driver = driver;
@@ -24,7 +24,6 @@ public class FinalTestcaseValidations extends Utility {
 			//Verify the campaign creation
 			verifyExactText(eleCampaignNameDisplay, campaign_Name, "Campaign Name");
 			
-			browser_closeActiveBrowser();
 			return this;
 		}
 	
@@ -36,7 +35,6 @@ public class FinalTestcaseValidations extends Utility {
 			//Verify the file Upload
 			verifyExactText(eleFileNameDisplay, file_Name, "File Name");
 			
-			browser_closeActiveBrowser();
 			return this;
 	}
 	
@@ -103,7 +101,6 @@ public class FinalTestcaseValidations extends Utility {
 			
 		}
 		
-		browser_closeActiveBrowser();
 		return this;
 	}
 	
@@ -122,7 +119,6 @@ public class FinalTestcaseValidations extends Utility {
 		WebElement eleBC = findElementBy("xpath", "//span[@class='test-id__field-label'][text()='Budgeted Cost in Campaign']/parent::div/following-sibling::div/span/span", "Budgeted Cost");
 		verifyExactText(eleBC, inpbgtCost, "Budgeted Cost");
 
-		browser_closeActiveBrowser();
 		return this;
 	}
 }

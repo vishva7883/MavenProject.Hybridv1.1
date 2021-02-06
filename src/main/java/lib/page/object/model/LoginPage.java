@@ -1,6 +1,7 @@
-package library.page.object.model;
+package lib.page.object.model;
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -16,39 +17,34 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import library.utility.Utility;
+import lib.utility.ProjectSpecificMethods;
 
-public class LoginPage extends Utility {
+public class LoginPage extends ProjectSpecificMethods {
 	
 	public LoginPage(RemoteWebDriver driver) {
 		this.driver = driver;
 	}
-
-
-	public LoginPage browser_Selection(String brw, String url) throws AWTException {
-			browser_Selections(brw,url);
-			return this;
-	}
-	
-	  
+		  
 	public LoginPage login_UserName_Click() { 
 		WebElement eleUserNameClick = findElementBy("id", "username", "User Name");
 		click(eleUserNameClick, "User Name");
 		return this;
 	}
+	
 	public LoginPage login_UserName_Clear()
 	{
 	    WebElement eleUserNameClear = findElementBy("id", "username", "User Name");
 		clear(eleUserNameClear, "User Name");
 		return this;
 	}   
+	
 	public LoginPage login_UserName_Type(String usrnme)
 	{
 	    WebElement eleUserNameType = findElementBy("id", "username", "User Name");
 		type(eleUserNameType, usrnme, "User Name");
 		return this;
 	}
-	    
+	
 
 	public LoginPage login_Password_Click() { 
 		WebElement elePasswordClick = findElementBy("id", "password", "Password");

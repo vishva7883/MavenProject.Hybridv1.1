@@ -1,10 +1,10 @@
-package library.page.object.model;
+package lib.page.object.model;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import library.utility.Utility;
+import lib.utility.ProjectSpecificMethods;
 
 
-public class DashboardsPage extends Utility {
+public class DashboardsPage extends ProjectSpecificMethods {
 
 	public DashboardsPage(RemoteWebDriver driver) {
 		this.driver = driver;

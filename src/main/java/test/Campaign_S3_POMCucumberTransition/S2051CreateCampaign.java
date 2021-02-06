@@ -1,18 +1,18 @@
 //<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-package test.Campaign_S3_TestNGPOMTransition;
+package test.Campaign_S3_POMCucumberTransition;
 
 import java.awt.AWTException;
 import java.io.IOException;
 
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import library.data.reader.ReadExcel;
-import library.page.object.model.*;
-import library.utility.Utility;
 
-public class S2051CreateCampaign extends Utility {
+import lib.dataProviders.ReadExcel;
+import lib.page.object.model.*;
+import lib.utility.ProjectSpecificMethods;
+
+public class S2051CreateCampaign extends ProjectSpecificMethods {
 
 
 	@Test(dataProvider = "CreateCampaign")
@@ -24,13 +24,10 @@ public class S2051CreateCampaign extends Utility {
 			String cn, 
 			String fn, 
 			String ln, 
-			String compo       ) throws AWTException  
+			String compo       ) throws AWTException, IOException  
 	{
 		cls = "S2051CreateCampaign.class";	
 		String campaign_Name = fn + ln + "_"+cn;	
-		
-		new LoginPage(driver)
-		.browser_Selection(browser, url);
 		
 		new LoginPage(driver)
 		.login_UserName_Type(uid)										// Enter SF login username

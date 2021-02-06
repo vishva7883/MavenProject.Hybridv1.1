@@ -1,11 +1,11 @@
-package library.page.object.model;
+package lib.page.object.model;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import library.utility.Utility;
+import lib.utility.ProjectSpecificMethods;
 
 
-public class TogglePage extends Utility {
+public class TogglePage extends ProjectSpecificMethods {
 
 	public TogglePage(RemoteWebDriver driver) {
 		this.driver = driver;

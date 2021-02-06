@@ -1,12 +1,12 @@
-package library.page.object.model;
+package lib.page.object.model;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import library.utility.Utility;
-import test.Campaign_S3_TestNGPOMTransition.S2051CreateCampaign;
+import lib.utility.ProjectSpecificMethods;
+import test.Campaign_S3_POMCucumberTransition.S2051CreateCampaign;
 
 
-public class AppLauncherPage extends Utility {
+public class AppLauncherPage extends ProjectSpecificMethods {
 
 	public AppLauncherPage(RemoteWebDriver driver) {
 		this.driver = driver;

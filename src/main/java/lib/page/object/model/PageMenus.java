@@ -1,11 +1,11 @@
-package library.page.object.model;
+package lib.page.object.model;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import library.utility.Utility;
+import lib.utility.ProjectSpecificMethods;
 
-public class PageMenus extends Utility {
+public class PageMenus extends ProjectSpecificMethods {
 
 	public PageMenus(RemoteWebDriver driver) {
 		this.driver = driver;

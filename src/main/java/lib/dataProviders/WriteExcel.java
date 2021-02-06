@@ -1,4 +1,4 @@
-package library.data.reader;
+package lib.dataProviders;
 
 import java.io.File;
 import java.io.FileInputStream;

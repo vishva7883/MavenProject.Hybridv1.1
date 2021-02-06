@@ -1,4 +1,4 @@
-package library.data.reader;
+package lib.dataProviders;
 
 import java.io.IOException;
 
@@ -8,11 +8,12 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import library.page.object.model.AppLauncherPage;
+import lib.page.object.model.AppLauncherPage;
+import lib.reports.Reports;
 
 import org.apache.poi.ss.usermodel.DataFormatter;
 
-public class ReadExcel{
+public class ReadExcel extends Reports{
 
 
 	public static XSSFWorkbook workbook;
@@ -47,6 +48,12 @@ public class ReadExcel{
 		}
 		wb.close();
 		return data;
+	}
+
+	@Override
+	public String takeSnap() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
