@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite configfailurepolicy="continue" guice-stage="DEVELOPMENT" verbose="8" name="Failed suite [Suite]">
+  <test thread-count="5" verbose="8" name="Regression(failed)">
+    <parameter name="uid" value="cypress@testleaf.com"/>
+    <parameter name="browser" value="Chrome"/>
+    <parameter name="pwd" value="Bootcamp@123"/>
+    <parameter name="url" value="https://login.salesforce.com"/>
+    <groups>
+      <run>
+        <include name="Smoke"/>
+        <include name="Regression"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="test.Campaign_S3_TestNGPOMTransition.S2051CreateCampaign">
+        <methods>
+          <include name="setValue"/>
+          <include name="mainflow"/>
+          <include name="beforeClass"/>
+          <include name="beforeSuite"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- test.Campaign_S3_TestNGPOMTransition.S2051CreateCampaign -->
+    </classes>
+  </test> <!-- Regression(failed) -->
+</suite> <!-- Failed suite [Suite] -->
