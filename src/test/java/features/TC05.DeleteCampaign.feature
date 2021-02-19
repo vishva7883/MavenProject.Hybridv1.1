@@ -8,8 +8,8 @@ And Click Sales link
 And Click Campaigns tab
 And Search Campaign as <cname>
 And Click Campaign Action dropdown
-And Click Delete Action
-When Click Confirm Delete 
+And Click Campaign Delete Action
+When Click Campaign Confirm Delete 
 Then Campaign_Verify Campaign deletion <vcname> 
 
 Examples:

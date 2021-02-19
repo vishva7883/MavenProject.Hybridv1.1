@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import lib.dataProviders.ReadExcel;
-import lib.page.object.model.*;
+import lib.pom.lightning.*;
 import lib.utility.ProjectSpecificMethods;
 
 public class S2051CreateCampaign extends ProjectSpecificMethods {
@@ -39,12 +39,9 @@ public class S2051CreateCampaign extends ProjectSpecificMethods {
 		.appLauncher_Sales_Click()										// Click on Sales link
 		.campaigns_Click()											//4. Click on the Campaigns tab 
 		.campaigns_New_Click()										//5. Click on the New button
-		.campaigns_NewCampaigns_CampaignName_Click()
 		.campaigns_NewCampaigns_CampaignName_Type(campaign_Name)	//6. Enter Campaign name as 'Bootcamp', Get the text and Store it 
-		.campaigns_NewCampaigns_StartDate_Click()
-		.campaigns_NewCampaigns_StartDate_CalenderClick(1)			//7. Choose Start date as Tomorrow  (Note : 0 for today, 1 for tomorrow and so on) 
-		.campaigns_NewCampaigns_EndDate_Click()
-		.campaigns_NewCampaigns_EndDate_CalenderClick(2)			//8. End date as Tomorrow + 1  (Note : 0 for today, 1 for tomorrow and so on)
+		.campaigns_NewCampaigns_StartDate_Click(1)					//7. Choose Start date as Tomorrow  (Note : 0 for today, 1 for tomorrow and so on) 
+		.campaigns_NewCampaigns_EndDate_Click(2)					//8. End date as Tomorrow + 1  (Note : 0 for today, 1 for tomorrow and so on)
 		.campaigns_NewCampaigns_Save_Click()
 		.s2051createcampaign_end_validation(campaign_Name);			//9. click Save and Verify the newly created Campaign
 		

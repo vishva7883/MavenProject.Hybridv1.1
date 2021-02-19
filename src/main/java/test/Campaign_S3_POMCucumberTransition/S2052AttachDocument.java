@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import lib.dataProviders.ReadExcel;
-import lib.page.object.model.LoginPage;
+import lib.pom.lightning.LoginPage;
 import lib.utility.ProjectSpecificMethods;
 
 
@@ -43,7 +43,7 @@ public class S2052AttachDocument extends ProjectSpecificMethods {
 		.campaigns_Click()											//4. Click on the Campaigns tab 
 		.campaigns_PickCampaignfromList_Click(campaign_Name)		//5. Click the Bootcamp link
 		.campaigns_Scroll()
-		.campaigns_Related_Attachments_Upload_Click(filePath)	//6. Upload file			
+		.campaigns_Related_Attachments_Upload_Click(fileName, filePath)	//6. Upload file			
 		.campaigns_Related_Attachments_CompleteFileUpload()
 		.S2052AttachDocument_end_validation(fileName);				//7. Verify the upload
 		

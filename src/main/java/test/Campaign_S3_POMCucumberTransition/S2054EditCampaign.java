@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import lib.dataProviders.ReadExcel;
-import lib.page.object.model.LoginPage;
+import lib.pom.lightning.LoginPage;
 import lib.utility.ProjectSpecificMethods;
 
 public class S2054EditCampaign extends ProjectSpecificMethods {
@@ -44,10 +44,8 @@ public class S2054EditCampaign extends ProjectSpecificMethods {
 		.campaigns_PickCampaignfromList_Click(campaign_Name)		//5. Click the Bootcamp link	
 		.campaigns_Details_Click()									//6. Click on the Details tab
 		.campaigns_Scroll()
-		.campaigns_CampaignsDetails_EditEndDate_Click()				//7. Change the End Date as Today+4f
+		.campaigns_CampaignsDetails_EditEndDate_Click(4)				//7. Change the End Date as Today+4f
 		.campaigns_Scroll()
-		.campaigns_CampaignsDetails_EndDate_Click()
-		.campaigns_CampaignsDetails_EndDate_CalenderClick(4)
 		.campaigns_CampaignsDetails_EditRevenue_Type(expectedRevenue) 		//8. Update the Expected Revenue as 1000000
 		.campaigns_CampaignsDetails_EditBudget_Type(budgetCost) 			//9. Update the Budget Cost in Campaign as 100000
 		.campaigns_CampaignsDetails_EditSave_Click()						//10. Click on Save and verify the updated values

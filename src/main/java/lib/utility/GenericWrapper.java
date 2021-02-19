@@ -25,6 +25,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lib.dataProviders.ReadExcel;
+import lib.reports.Reports;
 
 public class GenericWrapper {	
 
@@ -277,6 +278,18 @@ public class GenericWrapper {
 		}
 	}
 	
+	/** *******************************************************************************************
+	 * Method Name	:: click
+	 * Method Desc	:: This Method will click the clickable web element like, Button , Link, Label etc..
+	 * Called by 	:: None
+	 * Parameters	:: 'ele' - to carry Webelement locator details which webelement to be targeted in DOM 
+	 * 					'fieldDesc' - Actual field Description from UI for better report generation purpose
+	 * Calling 		:: none 
+	 * Return Type	:: void
+	 * Throws 		:: none
+	 * Author 		:: Vishnu S
+	 * Latest Change:: 13 Feb 2021, 11.30 AM
+	 * ********************************************************************************************/
 	
 	@SuppressWarnings("null")
 	public static void click(WebElement ele, String fieldDesc) {
@@ -312,10 +325,18 @@ public class GenericWrapper {
 	}
 	
 	
-	
-	
-	
-	
+	/** *******************************************************************************************
+	 * Method Name	:: getText
+	 * Method Desc	:: This Method will Extract any associated text from the webelement
+	 * Called by 	:: none
+	 * Parameters	:: 'ele' - to carry Webelement locator details which webelement to be targeted in DOM 
+	 * 					'fieldDesc' - Actual field Description from UI for better report generation purpose
+	 * Calling 		:: none 
+	 * Return Type	:: 'txt' which is extracted text from Webelement
+	 * Throws 		:: none
+	 * Author 		:: Vishnu S
+	 * Latest Change:: 13 Feb 2021, 11.30 AM
+	 * ********************************************************************************************/
 
 	public static String getText(WebElement ele, String fieldDesc) {
 
@@ -340,6 +361,18 @@ public class GenericWrapper {
 	}
 	
 	
+	/** *******************************************************************************************
+	 * Method Name	:: verifyExactTitle
+	 * Method Desc	:: This Method will Extract any associated text from the webelement
+	 * Called by 	:: none
+	 * Parameters	:: 'ele' - to carry Webelement locator details which webelement to be targeted in DOM 
+	 * 					'fieldDesc' - Actual field Description from UI for better report generation purpose
+	 * Calling 		:: none 
+	 * Return Type	:: 'txt' which is extracted text from Webelement
+	 * Throws 		:: none
+	 * Author 		:: Vishnu S
+	 * Latest Change:: 13 Feb 2021, 11.30 AM
+	 * ********************************************************************************************/
 	public boolean verifyExactTitle(String expectedTitle) {
 		
 		boolean bReturn = false;
@@ -362,6 +395,18 @@ public class GenericWrapper {
 		return bReturn;
 	}
 	
+	/** *******************************************************************************************
+	 * Method Name	:: verifyExactText
+	 * Method Desc	:: This Method will Extract any associated text from the webelement
+	 * Called by 	:: none
+	 * Parameters	:: 'ele' - to carry Webelement locator details which webelement to be targeted in DOM 
+	 * 					'fieldDesc' - Actual field Description from UI for better report generation purpose
+	 * Calling 		:: none 
+	 * Return Type	:: 'txt' which is extracted text from Webelement
+	 * Throws 		:: none
+	 * Author 		:: Vishnu S
+	 * Latest Change:: 13 Feb 2021, 11.30 AM
+	 * ********************************************************************************************/
 	public void verifyExactText(WebElement ele, String expectedText, String fieldName) {
 		
 		try {
@@ -382,7 +427,20 @@ public class GenericWrapper {
 		}
 
 	}
-
+	
+	/** *******************************************************************************************
+	 * Method Name	:: getPartialText
+	 * 
+	 * Method Desc	:: This Method will Extract any associated text from the webelement
+	 * Called by 	:: none
+	 * Parameters	:: 'ele' - to carry Webelement locator details which webelement to be targeted in DOM 
+	 * 					'fieldDesc' - Actual field Description from UI for better report generation purpose
+	 * Calling 		:: none 
+	 * Return Type	:: 'txt' which is extracted text from Webelement
+	 * Throws 		:: none
+	 * Author 		:: Vishnu S
+	 * Latest Change:: 13 Feb 2021, 11.30 AM
+	 * ********************************************************************************************/
 	public void verifyPartialText(WebElement ele, String expectedText, String fieldName) {
 		// TODO Auto-generated method stub
 
@@ -404,7 +462,15 @@ public class GenericWrapper {
 		}
 
 	}
-
-
+	
+	public static void sleep(int sec) throws InterruptedException
+	{
+		if (sec<1)
+			sec = 1;
+		if (sec>100)
+			sec = 1;
+		
+		Thread.sleep(sec*1000);
+	}
 	
 }

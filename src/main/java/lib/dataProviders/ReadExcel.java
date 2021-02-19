@@ -8,7 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import lib.page.object.model.AppLauncherPage;
+import lib.pom.lightning.AppLauncherPage;
 import lib.reports.Reports;
 
 import org.apache.poi.ss.usermodel.DataFormatter;

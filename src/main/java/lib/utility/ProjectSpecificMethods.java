@@ -3,7 +3,6 @@ package lib.utility;
 import java.awt.AWTException;
 import java.io.IOException;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 

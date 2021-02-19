@@ -3,6 +3,11 @@ package lib.reports;
 import java.io.IOException;
 import java.util.Date;
 
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -15,7 +20,7 @@ public abstract class Reports {
 	public static ExtentReports extent;
 	public static ExtentTest testSuite, test;
 
-	//@BeforeSuite
+	@BeforeSuite
 	// Level 1. Report File
 	public void startReport() {
 		spark = new ExtentSparkReporter("./sparkReports/result.html"); // For Creating the file alone and its Read Only mode.
@@ -25,7 +30,7 @@ public abstract class Reports {
 								// spark.loadXMLConfig("./src/main/resources/extent-config.xml");
 	}
 
-	//@BeforeClass
+	@BeforeClass
 	// Level 2. Test case details such as Test Name, Author.
 	public void startTestCase(String testCaseName, String testDescription) {
 	test = extent.createTest(testCaseName, testDescription);
@@ -34,20 +39,18 @@ public abstract class Reports {
 	test.assignDevice("Mac Pro");
 	}
 
-	//@BeforeMethod
+	@BeforeMethod
 	// Level 3. Test step details
 	public void startTestStep(String Status, String Desc) {
 			
 	}
 
-//	//@AfterSuite
+	@AfterSuite
 	// Level 4. Close Extent.
 	public void endResult() {
 		extent.flush();
 	}
 
-	
-	
 	
 	public abstract String takeSnap();
 	public void reportSteps(String desc,String status) throws IOException {

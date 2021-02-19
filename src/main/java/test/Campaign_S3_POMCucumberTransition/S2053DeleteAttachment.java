@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import lib.dataProviders.ReadExcel;
-import lib.page.object.model.LoginPage;
+import lib.pom.lightning.LoginPage;
 import lib.utility.ProjectSpecificMethods;
 
 
@@ -25,7 +25,7 @@ public class S2053DeleteAttachment extends ProjectSpecificMethods {
 			String cn, 
 			String fn, 
 			String ln, 
-			String compo       ) throws AWTException, IOException  
+			String compo       ) throws AWTException, IOException, InterruptedException  
 	{
 		cls = "S2053DeleteAttachment.class";	
 		String campaign_Name = fn + ln + "_"+cn;
@@ -43,8 +43,10 @@ public class S2053DeleteAttachment extends ProjectSpecificMethods {
 		.campaigns_Click()											//4. Click on the Campaigns tab 
 		.campaigns_PickCampaignfromList_Click(campaign_Name)		//5. Click the Bootcamp link	
 		.campaigns_Related_Attachments_ViewAll_Click()				//6. Click on View All link in the Attachments section
+		.campaigns_Related_Attachments_Table_Actions()
+		.campaigns_Related_Attachments_TableActions_Delete()
+		.campaigns_Related_Attachments_Confirm_Delete()
 		.S2053DeleteAttachment_end_validation();
-
 
 	}
 	

@@ -8,10 +8,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import lib.dataProviders.ReadExcel;
-import lib.page.object.model.LoginPage;
+import lib.pom.lightning.CampaignsPage;
+import lib.pom.lightning.LoginPage;
 import lib.utility.ProjectSpecificMethods;
 
-public class S2055DeleteOpportunity extends ProjectSpecificMethods {
+public class S2055DeleteCampaign extends ProjectSpecificMethods {
 
 
 	@Test(dataProvider = "CreateCampaign")
@@ -25,8 +26,8 @@ public class S2055DeleteOpportunity extends ProjectSpecificMethods {
 			String ln, 
 			String compo       ) throws AWTException, IOException  
 	{
-		cls = "S2054EditCampaign.class";	
-		String opp_Name = "Salesforce Automation by Palanimohan";
+		cls = "S2055DeleteCampaign.class";	
+		String c_Name = "Salesforce Automation by Palanimohan";
 		
 		new LoginPage(driver)
 		.login_UserName_Type(uid)										// Enter SF login username
@@ -36,8 +37,12 @@ public class S2055DeleteOpportunity extends ProjectSpecificMethods {
 		.clickToggle()												//2. Click on the toggle menu button from the left corner
 		.viewAll()
 		.appLauncher_Sales_Click()										// Click on Sales link
-		.opportunities_Click()											//4. Click on the Campaigns tab 
-		.opportunity_DeletefromList_Click(opp_Name);
+		.campaigns_Click()										//4. Click on the Campaigns tab 
+		.search_Campaign(c_Name)
+		.campaignActionDropdown()
+		.campaignDeleteAction()
+		.campaignConfirmDelete()
+		.S2055DeleteCampaign_end_validation(c_Name);
 		
 		}
 

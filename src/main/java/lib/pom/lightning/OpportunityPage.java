@@ -1,6 +1,6 @@
 //<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-package lib.page.object.model;
+package lib.pom.lightning;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;

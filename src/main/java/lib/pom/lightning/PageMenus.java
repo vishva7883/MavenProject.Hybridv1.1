@@ -1,8 +1,9 @@
-package lib.page.object.model;
+package lib.pom.lightning;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import cucumber.api.java.en.And;
 import lib.utility.ProjectSpecificMethods;
 
 public class PageMenus extends ProjectSpecificMethods {
@@ -11,7 +12,7 @@ public class PageMenus extends ProjectSpecificMethods {
 		this.driver = driver;
 	}
 
-
+	@And("Click Campaigns tab")
 	public CampaignsPage campaigns_Click() {
 		WebElement eleCampaignsTab = findElementBy("xpath", "//a[@title='Campaigns']", "Campaigns tab");
 		executor.executeScript("arguments[0].click();", eleCampaignsTab);

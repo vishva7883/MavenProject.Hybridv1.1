@@ -1,6 +1,6 @@
 //<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-package lib.page.object.model;
+package lib.pom.lightning;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
@@ -14,7 +14,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import lib.dataProviders.ReadExcel;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.When;
 import lib.utility.ProjectSpecificMethods;
 
 public class CampaignsPage extends ProjectSpecificMethods {
@@ -25,6 +26,7 @@ public class CampaignsPage extends ProjectSpecificMethods {
 				this.driver = driver;
 	}
 
+			@And("Click CampaignName link (.*)")	
 			public CampaignsPage campaigns_PickCampaignfromList_Click(String campaign_Name) {			
 				String ui_FieldName = "Table > Campaign Name";
 				List<WebElement> campaignName = findElementsBy("xpath","//table[@data-aura-class='uiVirtualDataTable']//following-sibling::tbody/tr/th/span/a",ui_FieldName);
@@ -40,6 +42,7 @@ public class CampaignsPage extends ProjectSpecificMethods {
 				return this;
 			}
 		
+			@And("Click New button")
 			public CampaignsPage campaigns_New_Click() {
 				String ui_FieldName = "New";	
 				
@@ -54,17 +57,66 @@ public class CampaignsPage extends ProjectSpecificMethods {
 				return this;
 			}
 		
+			
+			@And("Search Campaign as (.*)")
+			public CampaignsPage search_Campaign(String cname) {
+				String ui_FieldName = "Enter Search criteria ";
+				cname = "Bootcamp_Vishnu";
+				WebElement ele_CampaignSearchCriteria = findElementBy("xpath","//input[@name='Campaign-search-input']",ui_FieldName);
+				type(ele_CampaignSearchCriteria,cname,ui_FieldName);
+
+				ui_FieldName = "Campaign Search";
+				WebElement ele_CampaignSearch = findElementBy("xpath","//button[@name='refreshButton']",ui_FieldName);
+				click(ele_CampaignSearch,ui_FieldName);
+
+				return this;
+			}
+			
+			
+			@And("Click Campaign Action dropdown")
+			public CampaignsPage campaignActionDropdown() {
+				String ui_FieldName = "Campaign > Action menu";	
+				try {
+						List<WebElement> campaigns = findElementsBy("xpath","//table[@data-aura-class='uiVirtualDataTable']//tbody//th",ui_FieldName);
+				}catch(Exception e) {}
+				
+				List<WebElement> actionDropdown = findElementsBy("XPath","//table[@data-aura-class='uiVirtualDataTable']//tbody//td[10]/span/div",ui_FieldName);
+				for(WebElement ad : actionDropdown)
+				{
+					click(ad,"Action dropdown of first match");
+					break;
+				}
+				
+				return this;
+			}
+			
+			@And("Click Campaign Delete Action")
+			public CampaignsPage campaignDeleteAction() {
+				String ui_FieldName = "Delete Action of First record";	
+				List<WebElement> deleteAction = driver.findElementsByXPath("//a[@role='menuitem'][@title='Delete']");
+				for(WebElement da : deleteAction)
+				{
+					click(da,ui_FieldName);
+					break;
+				}
+				return this;
+			}	
+			
+			@When("Click Campaign Confirm Delete")  
+			public FinalTestcaseValidationsLightning campaignConfirmDelete() {
+				
+				String ui_FieldName = "Confirm Delete";	
+				WebElement ele_confidelete = findElementBy("xpath","//a[@role='menuitem'][@title='Delete']",ui_FieldName);
+				click(ele_confidelete,ui_FieldName);
+				return new FinalTestcaseValidationsLightning(driver);
+			}
+			
+
 		
 //Campaign New
 		
-		public CampaignsPage campaigns_NewCampaigns_CampaignName_Click() {
-			String ui_FieldName = "Campaign Name";	
-			
-			WebElement eleCampaignNameC = findElementBy("xpath","//span[text()='Campaign Name']//following-sibling::span//parent::label/following::input",ui_FieldName);
-			click(eleCampaignNameC, ui_FieldName);
-			return this;
-		}
-		
+
+		@And("Enter Campaign name as (.*) Get the text and Store it")
 		public CampaignsPage campaigns_NewCampaigns_CampaignName_Type(String campname) {
 			String ui_FieldName = "Campaign Name";	
 			
@@ -73,16 +125,14 @@ public class CampaignsPage extends ProjectSpecificMethods {
 			return this;
 		}
 		
-		public CampaignsPage campaigns_NewCampaigns_StartDate_Click() {
+		@And("Choose Start date as Tomorrow (.*)")
+		public CampaignsPage campaigns_NewCampaigns_StartDate_Click(int num) {
 			String ui_FieldName = "Start Date";	
 			
 			WebElement eleCampStartDate = findElementBy("xpath","//span[text()='Start Date']//parent::label//following-sibling::div/a",ui_FieldName);
 			click(eleCampStartDate, ui_FieldName);
-			return this;
-		}
 		
-		public CampaignsPage campaigns_NewCampaigns_StartDate_CalenderClick(int num) {
-			String ui_FieldName = "Start Date > Calender";	
+			ui_FieldName = "Start Date > Calender";	
 			
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			 
@@ -101,17 +151,14 @@ public class CampaignsPage extends ProjectSpecificMethods {
 		}
 		
 		
-		
-		public CampaignsPage campaigns_NewCampaigns_EndDate_Click() {
+		@And("Choose End date as Tomorrow plus one (.*)")
+		public CampaignsPage campaigns_NewCampaigns_EndDate_Click(int num) {
 			String ui_FieldName = "End Date";	
 			
 			WebElement eleCampEndDate = findElementBy("xpath","//span[text()='End Date']//parent::label//following-sibling::div/a",ui_FieldName);
 			click(eleCampEndDate, ui_FieldName);
-			return this;
-		}
 		
-		public CampaignsPage campaigns_NewCampaigns_EndDate_CalenderClick(int num) {
-			String ui_FieldName = "End Date > Calender";	
+			ui_FieldName = "End Date > Calender";	
 			
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			 
@@ -130,35 +177,30 @@ public class CampaignsPage extends ProjectSpecificMethods {
 		}
 
 		
-		
-		
-		public FinalTestcaseValidations campaigns_NewCampaigns_Save_Click() {
+		@When("click Save") 
+		public FinalTestcaseValidationsLightning campaigns_NewCampaigns_Save_Click() {
 			String ui_FieldName = "Save";	
 			
 			WebElement eleSave = findElementBy("xpath","//button[@title='Save']",ui_FieldName);
 			click(eleSave, ui_FieldName);
-			return new FinalTestcaseValidations(driver);
+			return new FinalTestcaseValidationsLightning(driver);
 		}
 		
 		
 //Campaign Related
 		
-		public CampaignsPage campaigns_Related_CampaignHierarchy_ViewAll_Click() {
-	
-			return this;
-		}
 		
-		
-		
-		public FinalTestcaseValidations campaigns_Related_Attachments_ViewAll_Click() {
+		@And("Click Attachments View All")
+		public CampaignsPage campaigns_Related_Attachments_ViewAll_Click() {
 			String ui_FieldName = "View All";	
 			
 			WebElement ele = findElementBy("xpath","(//span[@title='Opportunities']/preceding::div[@data-aura-class='forceRelatedListCardHeader'])[2]//following::span[@class='view-all-label']",ui_FieldName);
 			click(ele, ui_FieldName);	
-			return new FinalTestcaseValidations(driver);
+			return this;
 		}
 		
-		public CampaignsPage campaigns_Related_Attachments_Upload_Click(String filePath) {
+		@And ("Click Upload file (.*) from path (.*)")
+		public CampaignsPage campaigns_Related_Attachments_Upload_Click(String fileName, String filePath) {
 			String ui_FieldName = "Upload Files";	
 			
 			WebElement ele = findElementBy("xpath","//a[@title='Upload Files']",ui_FieldName);
@@ -183,15 +225,42 @@ public class CampaignsPage extends ProjectSpecificMethods {
 			return this;
 		}
 	
-		
-		public FinalTestcaseValidations campaigns_Related_Attachments_CompleteFileUpload() {
+		@When("Complete File Upload")
+		public FinalTestcaseValidationsLightning campaigns_Related_Attachments_CompleteFileUpload() {
 			String ui_FieldName = "Done";		
 	
 			WebElement ele = findElementBy("xpath","(//button[@data-aura-class = 'uiButton--default uiButton--brand uiButton'])[2]",ui_FieldName);
 			click(ele, ui_FieldName);
-			return new FinalTestcaseValidations(driver);
+			return new FinalTestcaseValidationsLightning(driver);
 		}
 
+
+		@And("Click Attachments Action dropdown")
+		public CampaignsPage campaigns_Related_Attachments_Table_Actions() throws InterruptedException {
+			
+			String ui_FieldName = "Table of Attachments";
+			List<WebElement> tabRow = findElementsBy("xpath", "(//table[@data-aura-class='uiVirtualDataTable'])[2]/tbody/tr", ui_FieldName);
+			int initTabRowCount = tabRow.size();
+			System.out.println("Total no of files listed : "+initTabRowCount);
+		
+			if (initTabRowCount < 1)
+			{
+				System.out.println("There are no files uploaded to delete");
+			}	
+			else
+			{
+				List<WebElement> tabDropdown = findElementsBy("xpath", "(//table[@data-aura-class='uiVirtualDataTable'])[2]/tbody/tr/td[5]/span/div/a", "Action List in table record");
+				for(WebElement dd : tabDropdown)
+				{
+					click(dd,"Action Dropdown of First record");
+					sleep(1);
+					break;
+				}
+			}
+			return this;
+		}
+		
+		@And("Click Delete Action")
 		public CampaignsPage campaigns_Related_Attachments_TableActions_Delete() {
 			String ui_FieldName = "Delete action of First record";
 			
@@ -200,7 +269,16 @@ public class CampaignsPage extends ProjectSpecificMethods {
 			return this;
 			}
 
-
+	
+		@When("Click Confirm Delete")
+		public FinalTestcaseValidationsLightning campaigns_Related_Attachments_Confirm_Delete() {
+	
+			String ui_FieldName = "Confirm Delete Action";
+			WebElement ele_CDL = findElementBy("xpath", "//button[@type='button'][@title='Delete']", "Confirm Delete");
+			click(ele_CDL,ui_FieldName);
+			return new FinalTestcaseValidationsLightning(driver);
+		}
+		
 		public CampaignsPage campaigns_Related_Opportunities_ViewAll_Click() {
 			
 			
@@ -213,7 +291,7 @@ public class CampaignsPage extends ProjectSpecificMethods {
 	
 //Campaign Details
 		
-
+		@And("Click Details tab")
 		public CampaignsPage campaigns_Details_Click() {
 			String ui_FieldName = "Details";
 			
@@ -223,27 +301,19 @@ public class CampaignsPage extends ProjectSpecificMethods {
 			return this;
 		}
 		
-
-		public CampaignsPage campaigns_CampaignsDetails_EditEndDate_Click() {
+		@And("Edit EndDate add (.*) days")
+		public CampaignsPage campaigns_CampaignsDetails_EditEndDate_Click(int num) {
 			String ui_FieldName = "Edit End Date";	
 			
 			WebElement ele_EditEndDate = findElementBy("xpath","//button[@title='Edit End Date']",ui_FieldName);
 			click(ele_EditEndDate, ui_FieldName);
-			return this;
 			
-		}
-		
-		public CampaignsPage campaigns_CampaignsDetails_EndDate_Click() {
-			String ui_FieldName = "End Date";	
+			ui_FieldName = "End Date";	
 			
 			WebElement ele_EndDatePicker = findElementBy("xpath","(//a[@class='datePicker-openIcon display'])[2]",ui_FieldName);
 			click(ele_EndDatePicker, ui_FieldName);
-			return this;
 			
-		}
-		
-		public CampaignsPage campaigns_CampaignsDetails_EndDate_CalenderClick(int num) {
-			String ui_FieldName = "End Date > Calender ";	
+			ui_FieldName = "End Date > Calender ";	
 			
 			DateFormat caldateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -252,13 +322,13 @@ public class CampaignsPage extends ProjectSpecificMethods {
 			
 			String dateXPath = "//td[@data-datevalue='"+calexpDate+"']";
 			
-			WebElement ele_EndDatePicker = findElementBy("xpath",dateXPath, ui_FieldName);
-			click(ele_EndDatePicker, ui_FieldName);
+			WebElement ele_EdtEndDatePicker = findElementBy("xpath",dateXPath, ui_FieldName);
+			click(ele_EdtEndDatePicker, ui_FieldName);
 			
 			return this;
 		}
 		
-		
+		@And("Edit Revenue as (.*)")
 		public CampaignsPage campaigns_CampaignsDetails_EditRevenue_Type(String expRev) {
 			String ui_FieldName = "Edit Revenue";	
 			
@@ -273,6 +343,7 @@ public class CampaignsPage extends ProjectSpecificMethods {
 			
 		}
 		
+		@And("Edit Budget as (.*)")
 		public CampaignsPage campaigns_CampaignsDetails_EditBudget_Type(String bgtCost){
 			String ui_FieldName = "Edit Budget Cost";	
 			
@@ -287,14 +358,14 @@ public class CampaignsPage extends ProjectSpecificMethods {
 			
 		} 
 		
-		
-		public FinalTestcaseValidations campaigns_CampaignsDetails_EditSave_Click(){
+		@When("Click EditSave")		
+		public FinalTestcaseValidationsLightning campaigns_CampaignsDetails_EditSave_Click(){
 			String ui_FieldName = "Save";	
 			
 			WebElement ui_EditBudgetCost = findElementBy("xpath","//button[@title='Save']",ui_FieldName);
 			click(ui_EditBudgetCost,ui_FieldName);
 			
-			return new FinalTestcaseValidations(driver);
+			return new FinalTestcaseValidationsLightning(driver);
 		}
 }
 			

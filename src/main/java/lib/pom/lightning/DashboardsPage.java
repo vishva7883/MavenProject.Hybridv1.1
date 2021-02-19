@@ -1,4 +1,4 @@
-package lib.page.object.model;
+package lib.pom.lightning;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import lib.utility.ProjectSpecificMethods;

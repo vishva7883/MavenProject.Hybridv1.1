@@ -1,4 +1,4 @@
-package lib.dataProviders;
+package test.Campaign_S3_POMCucumberTransition;
 
 import java.util.Date;
 
