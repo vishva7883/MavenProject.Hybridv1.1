@@ -16,7 +16,7 @@ import lib.utility.ProjectSpecificMethods;
 
 public class S2053DeleteAttachment extends ProjectSpecificMethods {
 
-	@Test(dataProvider = "CreateCampaign", dependsOnMethods = "test.Campaign_S3_TestNGPOMTransition.S2052AttachDocument")
+	//@Test(dataProvider = "CreateCampaign", dependsOnMethods = "test.Campaign_S3_TestNGPOMTransition.S2052AttachDocument")
 	public void mainflow(
 			String url,
 			String uid,

@@ -15,7 +15,7 @@ import lib.utility.ProjectSpecificMethods;
 public class S2051CreateCampaign extends ProjectSpecificMethods {
 
 
-	@Test(dataProvider = "CreateCampaign")
+	//@Test(dataProvider = "CreateCampaign")
 	public void mainflow(
 			String url,
 			String uid,

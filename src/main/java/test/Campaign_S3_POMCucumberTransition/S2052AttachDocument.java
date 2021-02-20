@@ -15,7 +15,7 @@ import lib.utility.ProjectSpecificMethods;
 
 public class S2052AttachDocument extends ProjectSpecificMethods {
 
-	@Test(dataProvider = "CreateCampaign", dependsOnMethods = "test.Campaign_S3_TestNGPOMTransition.S2051CreateCampaign")
+	//@Test(dataProvider = "CreateCampaign", dependsOnMethods = "test.Campaign_S3_TestNGPOMTransition.S2051CreateCampaign")
 	public void mainflow(
 			String url,
 			String uid,
